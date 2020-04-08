@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'omniauth-oauth2'
 require 'multi_json'
 
@@ -10,11 +12,10 @@ module OmniAuth
         :authorize_url => 'https://www.strava.com/oauth/authorize',
         :token_url => 'https://www.strava.com/oauth/token'
       }
-      option :scope, 'public'
 
       def authorize_params
         super.tap do |params|
-          params[:approval_prompt] = 'auto'
+          params[:approval_prompt] = 'force'
         end
       end
 
